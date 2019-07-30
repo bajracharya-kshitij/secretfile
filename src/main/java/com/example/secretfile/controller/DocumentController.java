@@ -1,5 +1,6 @@
 package com.example.secretfile.controller;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ public class DocumentController {
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "multipart/form-data")
 	public void addDocument(@RequestParam(value = "documents") MultipartFile[] multipartFiles) 
-			throws NoSuchAlgorithmException {
+			throws NoSuchAlgorithmException, IOException {
 		LOG.debug("Adding document >>>");
 		documentService.addDocuments(multipartFiles);
 		LOG.debug("<<< Document added");
