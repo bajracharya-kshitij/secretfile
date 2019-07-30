@@ -32,7 +32,7 @@ public class Document {
 	@Column(name = "hash", nullable = false, unique = true)
 	private String hash;
 	
-	public static final int MIN_RADIX = 16;
+	public static final int RADIX = 16;
 
 	public Long getId() {
 		return id;
@@ -71,6 +71,6 @@ public class Document {
 				.append(new Date().getTime()).toString();
 		MessageDigest messageDigest = MessageDigest.getInstance("MD5");
 		messageDigest.update(transformedName.getBytes(StandardCharsets.UTF_8));
-		this.hash = new BigInteger(1, messageDigest.digest()).toString(MIN_RADIX);
+		this.hash = new BigInteger(1, messageDigest.digest()).toString(RADIX);
 	}
 }
